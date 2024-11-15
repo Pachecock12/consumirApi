@@ -1,20 +1,23 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserService } from './services/user.service';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    NgxPaginationModule  // Importa el módulo de paginación aquí
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
